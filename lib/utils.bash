@@ -47,11 +47,10 @@ list_all_versions() {
 download_release() {
   local version filename url os_name
   version="$1"
-  cli_major_version="${version//\.*}"
+  cli_major_version="${version//\.*/}"
   os_name="$2"
   arch="$3"
   filename="$4"
-
 
   url="https://releases.jfrog.io/artifactory/jfrog-cli/v${cli_major_version}/${version}/jfrog-cli-${os_name}-${arch}/jfrog"
 
