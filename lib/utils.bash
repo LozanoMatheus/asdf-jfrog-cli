@@ -89,7 +89,7 @@ get_os_name() {
     os_name="linux"
     ;;
   Darwin*)
-    os_name="macos"
+    os_name="mac"
     ;;
   *)
     log_failure_and_exit "Script only supports macOS and Linux"
