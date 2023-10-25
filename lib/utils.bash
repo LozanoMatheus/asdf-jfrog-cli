@@ -3,8 +3,7 @@
 set -euo pipefail
 
 REPO="jfrog/jfrog-cli"
-TOOL_LONG_NAME="jfrog-cli"
-TOOL_NAME="jfrog"
+TOOL_NAME="jfrog-cli"
 TOOL_SHORT_NAME="jf"
 TOOL_TEST="${TOOL_SHORT_NAME} --version"
 
@@ -31,7 +30,7 @@ list_github_tags() {
   local RC="0"
   set +euo pipefail
   while [ ${RC} -eq 0 ]; do
-    GH_RELEASES_PAGE=$((${GH_RELEASES_PAGE} + 1))
+    GH_RELEASES_PAGE=$((GH_RELEASES_PAGE + 1))
     GH_RELEASES="${GH_RELEASES}$(curl "${CURL_OPTS[@]}" "https://api.github.com/repos/${REPO}/releases?per_page=100&page=${GH_RELEASES_PAGE}" | awk '/tag_name/{ rc = 1; gsub(/,|"/,"") ; print $2 }; END { exit !rc }')"
     RC="${?}"
   done
@@ -52,7 +51,15 @@ download_release() {
   arch="$3"
   filename="$4"
 
-  url="https://releases.jfrog.io/artifactory/jfrog-cli/v${cli_major_version}/${version}/jfrog-cli-${os_name}-${arch}/jfrog"
+  if [ "$cli_major_version" -eq 2 ]; then
+    effective_cli_major_version=2-jf
+    jfrog_cli_name=jf
+  else
+    effective_cli_major_version=$cli_major_version
+    jfrog_cli_name=jfrog
+  fi
+
+  url="https://releases.jfrog.io/artifactory/jfrog-cli/v${effective_cli_major_version}/${version}/jfrog-cli-${os_name}-${arch}/${jfrog_cli_name}"
 
   echo "* Downloading $TOOL_NAME release $version..."
   curl "${CURL_OPTS[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
