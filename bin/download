@@ -15,8 +15,11 @@ os_name="$(get_os_name)"
 arch="$(get_arch)"
 
 release_file="${ASDF_DOWNLOAD_PATH}/${TOOL_NAME}"
-
-download_release "${ASDF_INSTALL_VERSION}" "${os_name}" "${arch}" "${release_file}"
+if [ "$os_name" == "mac" ] && [ "$arch" != "arm64" ] ; then
+    download_release "${ASDF_INSTALL_VERSION}" "${os_name}" "386" "${release_file}"
+else 
+    download_release "${ASDF_INSTALL_VERSION}" "${os_name}" "${arch}" "${release_file}"
+fi
 
 \mv "${ASDF_DOWNLOAD_PATH}/${TOOL_NAME}" "${ASDF_DOWNLOAD_PATH}/${TOOL_SHORT_NAME}"
 

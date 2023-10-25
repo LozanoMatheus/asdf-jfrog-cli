@@ -22,22 +22,23 @@
 Plugin:
 
 ```shell
-asdf plugin add jfrog-cli
+asdf plugin add jfrog-cli-v2-jf
 # or
 asdf plugin add jfrog-cli https://github.com/LozanoMatheus/asdf-jfrog-cli.git
+asdf plugin add jfrog-cli-v2-jf https://github.com/jmcubel/asdf-jfrog-cli.git
 ```
 
 jfrog-cli:
 
 ```shell
 # Show all installable versions
-asdf list-all jfrog-cli
+asdf list-all jfrog-cli-v2-jf
 
 # Install specific version
-asdf install jfrog-cli latest
+asdf install jfrog-cli-v2-jf latest
 
 # Set a version globally (on your ~/.tool-versions file)
-asdf global jfrog-cli latest
+asdf global jfrog-cli-v2-jf latest
 
 # Now jfrog-cli commands are available
 Please, check the official documentation in the section Commands Summary:
