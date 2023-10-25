@@ -57,7 +57,7 @@ download_release() {
   else
     effective_cli_major_version=$cli_major_version
     jfrog_cli_name=jfrog
-  fi 
+  fi
 
   url="https://releases.jfrog.io/artifactory/jfrog-cli/v${effective_cli_major_version}/${version}/jfrog-cli-${os_name}-${arch}/${jfrog_cli_name}"
 
