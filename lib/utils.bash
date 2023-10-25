@@ -3,7 +3,7 @@
 set -euo pipefail
 
 REPO="jfrog/jfrog-cli"
-TOOL_NAME="jfrog-cli-v2-jf"
+TOOL_NAME="jfrog-cli"
 TOOL_SHORT_NAME="jf"
 TOOL_TEST="${TOOL_SHORT_NAME} --version"
 
@@ -53,14 +53,13 @@ download_release() {
 
   if [ "$cli_major_version" -eq 2 ]; then
     effective_cli_major_version=2-jf
-    jfrog_client=jf
+    jfrog_cli_name=jf
   else
     effective_cli_major_version=$cli_major_version
-    jfrog_client=jfrog
+    jfrog_cli_name=jfrog
   fi 
 
-  #url="https://releases.jfrog.io/artifactory/jfrog-cli/v${cli_major_version}/${version}/jfrog-cli-${os_name}-${arch}/jfrog"
-  url="https://releases.jfrog.io/artifactory/jfrog-cli/v${effective_cli_major_version}/${version}/jfrog-cli-${os_name}-${arch}/${jfrog_client}"
+  url="https://releases.jfrog.io/artifactory/jfrog-cli/v${effective_cli_major_version}/${version}/jfrog-cli-${os_name}-${arch}/${jfrog_cli_name}"
 
   echo "* Downloading $TOOL_NAME release $version..."
   curl "${CURL_OPTS[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
