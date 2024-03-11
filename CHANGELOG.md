@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.0.1](https://www.github.com/LozanoMatheus/asdf-jfrog-cli/compare/v1.0.0...v1.0.1) (2024-03-11)
+
+
+### Bug Fixes
+
+* Support arm64 architecture ([37120da](https://www.github.com/LozanoMatheus/asdf-jfrog-cli/commit/37120daabbf02211618e3300a8161ea052937da6))
+
 ## 1.0.0 (2023-10-25)
 
 
