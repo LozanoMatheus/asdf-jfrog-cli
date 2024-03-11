@@ -118,7 +118,7 @@ get_arch() {
   arm | armv7l)
     arch="arm"
     ;;
-  aarch64)
+  aarch64 | arm64)
     arch="arm64"
     ;;
   s390x)
